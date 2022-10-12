@@ -1,7 +1,6 @@
 package lt.codeacademy.eventplanning.services;
 
 
-import lt.codeacademy.eventplanning.dto.GetUserRegistrationResponseDTO;
 import lt.codeacademy.eventplanning.entities.UserRegistration;
 import lt.codeacademy.eventplanning.repositories.UserRepository;
 import org.springframework.stereotype.Service;
@@ -9,8 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
-import static lt.codeacademy.eventplanning.converter.UserRegistrationConverter.convertUserRegistrationToGetUserRegistrationResponseDTO;
 
 @Service
 public class UserRegistrationService {
@@ -25,19 +22,24 @@ public class UserRegistrationService {
         return this.userRepository.findAll();
     }
 
-    public GetUserRegistrationResponseDTO getUsersById(Long id) {
+    public UserRegistration getUsersById(Long id) {
 
         Optional<UserRegistration> user = this.userRepository.findById(id);
         if (user.isPresent()) {
 
-            return convertUserRegistrationToGetUserRegistrationResponseDTO(user.get());
+            return user.get();
         } else {
             return null;
         }
     }
 
-    public void addUser(UserRegistration userRegistration) {
+
+    public void addSaveUser(UserRegistration userRegistration) {
         this.userRepository.save(userRegistration);
+    }
+
+    public void deleteUserById(Long id) {
+        this.userRepository.deleteById(id);
     }
 
 }
