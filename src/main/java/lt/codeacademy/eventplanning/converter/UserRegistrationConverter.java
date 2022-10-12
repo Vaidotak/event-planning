@@ -31,4 +31,27 @@ public class UserRegistrationConverter {
         }
         return userReg;
     }
+
+    public static void patchUserRegistrationFromCreateUserRegistrationRequestDto(UserRegistration userRegistration,
+                                                                                 CreateUserRegistrationRequestDTO requestDTO) {
+        if (isNewStringValueEmptyNullOrSameAsOld(requestDTO.getName(), userRegistration.getName())) {
+            userRegistration.setName(requestDTO.getName());
+        }
+
+        if (isNewStringValueEmptyNullOrSameAsOld(requestDTO.getLastName(), userRegistration.getLastName())) {
+            userRegistration.setLastName(requestDTO.getLastName());
+        }
+
+        if (isNewStringValueEmptyNullOrSameAsOld(requestDTO.getEMail(), userRegistration.getEMail())) {
+            userRegistration.setEMail(requestDTO.getEMail());
+        }
+
+        if (isNewStringValueEmptyNullOrSameAsOld(requestDTO.getBirthDate(), userRegistration.getBirthDate())) {
+            userRegistration.setBirthDate(requestDTO.getBirthDate());
+        }
+
+    }
+    private static boolean isNewStringValueEmptyNullOrSameAsOld(String newValue, String oldValue){
+        return newValue != null && !newValue.isEmpty() && !newValue.equals(oldValue);
+    }
 }
