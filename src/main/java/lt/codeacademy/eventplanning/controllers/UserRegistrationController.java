@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static lt.codeacademy.eventplanning.converter.UserRegistrationConverter.convertCreateUserRegistrationRequestDtoToUser;
+
 @RestController
 @RequestMapping("/user-registration")
 public class UserRegistrationController {
@@ -45,6 +47,9 @@ public class UserRegistrationController {
 
     @PostMapping
     public void addUser(@RequestBody CreateUserRegistrationRequestDTO createUserRegistrationRequestDTO){
+
+        UserRegistration userRegistration = convertCreateUserRegistrationRequestDtoToUser(createUserRegistrationRequestDTO);
+        this.userRegistrationService.addUser(userRegistration);
         System.out.println(createUserRegistrationRequestDTO.toString());
 
     }
