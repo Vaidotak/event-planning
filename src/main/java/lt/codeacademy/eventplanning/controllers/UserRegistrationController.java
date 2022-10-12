@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 import static lt.codeacademy.eventplanning.converter.UserRegistrationConverter.convertCreateUserRegistrationRequestDtoToUser;
+import static lt.codeacademy.eventplanning.converter.UserRegistrationConverter.convertUserRegistrationToGetUserRegistrationResponseDTO;
 
 @RestController
 @RequestMapping("/user-registration")
@@ -22,34 +23,50 @@ public class UserRegistrationController {
     private UserRegistrationService userRegistrationService;
 
     @GetMapping
-    public List<UserRegistration> getAllUsers(){
+    public List<UserRegistration> getAllUsers() {
         return userRegistrationService.getAllUsers();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GetUserRegistrationResponseDTO> getUserById(@PathVariable(name="id") Long id){
-        GetUserRegistrationResponseDTO user = this.userRegistrationService.getUsersById(id);
+    public ResponseEntity<GetUserRegistrationResponseDTO> getUserById(@PathVariable(name = "id") Long id) {
+        UserRegistration user = this.userRegistrationService.getUsersById(id);
 
-        if(user == null){
+        if (user == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        else return ResponseEntity.ok(user);
+        } else return ResponseEntity.ok(convertUserRegistrationToGetUserRegistrationResponseDTO(user));
     }
 
-    @GetMapping("/{id}/birthday")
-    public ResponseEntity<String> getUserBirtDayById(@PathVariable(name="id") Long id){
-        GetUserRegistrationResponseDTO user = this.userRegistrationService.getUsersById(id);
-        if(user == null){
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> putUserById(@PathVariable(name = "id") Long id,
+                                            @RequestBody CreateUserRegistrationRequestDTO createUserRegistrationRequestDTO) {
+        UserRegistration user = this.userRegistrationService.getUsersById(id);
+
+        if (user == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        else return ResponseEntity.ok(user.getBirthDate());
+        UserRegistration newRegistration = convertCreateUserRegistrationRequestDtoToUser(createUserRegistrationRequestDTO);
+        newRegistration.setId(user.getId());
+        this.userRegistrationService.addSaveUser(newRegistration);
+
+
+        return ResponseEntity.ok().build();
     }
+
+//    @GetMapping("/{id}/birthday")
+//    public ResponseEntity<Void> putUserById(@PathVariable(name="id") Long id){
+//        UserRegistration user = this.userRegistrationService.getUsersById(id);
+//
+//        if(user == null){
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//        else return ResponseEntity.ok(convertUserRegistrationToGetUserRegistrationResponseDTO(user).getBirthDate());
+//    }
 
     @PostMapping
-    public void addUser(@RequestBody CreateUserRegistrationRequestDTO createUserRegistrationRequestDTO){
+    public void addUser(@RequestBody CreateUserRegistrationRequestDTO createUserRegistrationRequestDTO) {
 
         UserRegistration userRegistration = convertCreateUserRegistrationRequestDtoToUser(createUserRegistrationRequestDTO);
-        this.userRegistrationService.addUser(userRegistration);
+        this.userRegistrationService.addSaveUser(userRegistration);
         System.out.println(createUserRegistrationRequestDTO.toString());
 
     }
