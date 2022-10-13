@@ -13,6 +13,7 @@ import java.util.List;
 
 import static lt.codeacademy.eventplanning.converter.UserRegistrationConverter.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/user-registration")
 public class UserRegistrationController {
