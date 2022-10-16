@@ -13,28 +13,19 @@ import javax.persistence.*;
 @Entity
 public class UserRegistration {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public Long getId() {
-        return id;
-    }
+    @Column
+    private String firstName;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Column(nullable = false)
-    private String name;
-
-    @Column(nullable = false)
+    @Column
     private String lastName;
 
-    @Column(nullable = false)
+    @Column
     private String eMail;
 
-    @Column(nullable = false)
-    private String birthDate;
+    @Column
+    private String birth;
 
 }
