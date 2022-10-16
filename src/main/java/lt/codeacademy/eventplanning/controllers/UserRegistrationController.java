@@ -13,7 +13,7 @@ import java.util.List;
 
 import static lt.codeacademy.eventplanning.converter.UserRegistrationConverter.*;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/user-registration")
 public class UserRegistrationController {
@@ -41,7 +41,7 @@ public class UserRegistrationController {
 
         if (user == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } else return ResponseEntity.ok(convertUserRegistrationToGetUserRegistrationResponseDTO(user).getBirthDate());
+        } else return ResponseEntity.ok(convertUserRegistrationToGetUserRegistrationResponseDTO(user).getBirth());
     }
 
     @GetMapping("/{id}/last-name")

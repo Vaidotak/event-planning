@@ -11,8 +11,8 @@ import lombok.Setter;
 public class GetUserRegistrationResponseDTO {
 
     private Long id;
-    private String name;
+    private String firstName;
     private String lastName;
     private String eMail;
-    private String birthDate;
+    private String birth;
 }

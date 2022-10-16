@@ -10,18 +10,18 @@ import lombok.Setter;
 
 public class CreateUserRegistrationRequestDTO {
 
-    private String name;
+    private String firstName;
     private String lastName;
     private String eMail;
-    private String birthDate;
+    private String birth;
 
     @Override
     public String toString() {
         return "SaveUserRegistrationRequestDTO{" +
-                "name='" + name + '\'' +
+                "name='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", eMail='" + eMail + '\'' +
-                ", birthDate='" + birthDate + '\'' +
+                ", birth'" + birth + '\'' +
                 '}';
     }
 }
