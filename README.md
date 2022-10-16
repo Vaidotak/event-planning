@@ -4,7 +4,7 @@
 Baigiamasis Code Academy full stack darbas
 ## Tech Stack
 
-**Client:** HTML, CSS, SCSS, JavaSript
+**Client:** HTML, CSS, SCSS, JavaSript, W3.CSS framework
 
 **Server:** Java, Spring
 
