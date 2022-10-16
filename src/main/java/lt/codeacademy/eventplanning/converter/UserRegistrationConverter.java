@@ -12,10 +12,10 @@ public class UserRegistrationConverter {
 
         userRegistrationDTO  = new GetUserRegistrationResponseDTO();
         userRegistrationDTO.setId(userReg.getId());
-        userRegistrationDTO.setName(userReg.getName());
+        userRegistrationDTO.setFirstName(userReg.getFirstName());
         userRegistrationDTO.setLastName(userReg.getLastName());
         userRegistrationDTO.setEMail(userReg.getEMail());
-        userRegistrationDTO.setBirthDate(userReg.getBirthDate());
+        userRegistrationDTO.setBirth(userReg.getBirth());
         }
         return userRegistrationDTO;
     }
@@ -24,18 +24,18 @@ public class UserRegistrationConverter {
         UserRegistration userReg = null;
         if(requestDTO != null){
             userReg = new UserRegistration();
-            userReg.setName(requestDTO.getName());
+            userReg.setFirstName(requestDTO.getFirstName());
             userReg.setLastName(requestDTO.getLastName());
             userReg.setEMail(requestDTO.getEMail());
-            userReg.setBirthDate(requestDTO.getBirthDate());
+            userReg.setBirth(requestDTO.getBirth());
         }
         return userReg;
     }
 
     public static void patchUserRegistrationFromCreateUserRegistrationRequestDto(UserRegistration userRegistration,
                                                                                  CreateUserRegistrationRequestDTO requestDTO) {
-        if (isNewStringValueEmptyNullOrSameAsOld(requestDTO.getName(), userRegistration.getName())) {
-            userRegistration.setName(requestDTO.getName());
+        if (isNewStringValueEmptyNullOrSameAsOld(requestDTO.getFirstName(), userRegistration.getFirstName())) {
+            userRegistration.setFirstName(requestDTO.getFirstName());
         }
 
         if (isNewStringValueEmptyNullOrSameAsOld(requestDTO.getLastName(), userRegistration.getLastName())) {
@@ -46,8 +46,8 @@ public class UserRegistrationConverter {
             userRegistration.setEMail(requestDTO.getEMail());
         }
 
-        if (isNewStringValueEmptyNullOrSameAsOld(requestDTO.getBirthDate(), userRegistration.getBirthDate())) {
-            userRegistration.setBirthDate(requestDTO.getBirthDate());
+        if (isNewStringValueEmptyNullOrSameAsOld(requestDTO.getBirth(), userRegistration.getBirth())) {
+            userRegistration.setBirth(requestDTO.getBirth());
         }
 
     }
