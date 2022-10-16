@@ -1,49 +1,62 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS</title>
+<title>User registration form</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="./style/style.css">
 
 <body>
+    <main id="top-section">
+        <div class="user-form-container w3-container w3-half">
 
-    <form action="/action_page.php" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
-        <h2 class="w3-center">Please fill out this form</h2>
+            <form id="form" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
+                <h2 class="w3-center">Please fill out this form</h2>
 
-        <div class="w3-row w3-section">
-            <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
-            <div class="w3-rest">
-                <input class="w3-input w3-border" name="first" type="text" placeholder="First Name">
-            </div>
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
+                    <div class="w3-rest">
+                        <input name="firstName" class="w3-input w3-border" type="text" placeholder="First Name">
+                    </div>
+                </div>
+
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
+                    <div class="w3-rest">
+                        <input name="lastName" class="w3-input w3-border" type="text" placeholder="Last Name">
+                    </div>
+                </div>
+
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
+                    <div class="w3-rest">
+                        <input name="email" class="w3-input w3-border" type="text" placeholder="Email">
+                    </div>
+                </div>
+
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-birthday-cake"></i></div>
+                    <div class="w3-rest">
+                        <input name="birth" class="w3-input w3-border" type="text" placeholder="Date of birth">
+                    </div>
+                </div>
+
+                <p class="w3-center">
+                    <button type="submit" id="submit" class="w3-button w3-section w3-blue w3-ripple"> Send </button>
+                </p>
+            </form>
         </div>
-
-        <div class="w3-row w3-section">
-            <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
-            <div class="w3-rest">
-                <input class="w3-input w3-border" name="last" type="text" placeholder="Last Name">
-            </div>
+        <div class="logo w3-panel w3-container w3-half">
+            <h1>Event Registration </h1>
+            <h4><strong>Capture event registrations with beautifully branded online experiences</strong></h4>
+            <p>Every event starts with registration. Kick it off the right way and give attendees a taste of what they
+                can expect. Your events are unique, and your registration technology should be as responsive, intuitive,
+                and flexible as the events you plan.</p>
+                <a href="http://localhost:8080/swagger-ui/index.html">Api Documentation</a>
         </div>
-
-        <div class="w3-row w3-section">
-            <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
-            <div class="w3-rest">
-                <input class="w3-input w3-border" name="email" type="text" placeholder="Email">
-            </div>
-        </div>
-
-        <div class="w3-row w3-section">
-            <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-birthday-cake"></i></div>
-            <div class="w3-rest">
-                <input class="w3-input w3-border" name="message" type="text" placeholder="Date of birth">
-            </div>
-        </div>
-
-        <p class="w3-center">
-            <button class="w3-button w3-section w3-blue w3-ripple"> Send </button>
-        </p>
-    </form>
-
+    </main>
+    <div class="userContainer w3-container" id="userContainer"></div>
+    <script type="module" src="./scripts.js"></script>
 </body>
 
 </html>
